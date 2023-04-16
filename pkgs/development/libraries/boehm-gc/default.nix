@@ -45,7 +45,7 @@ stdenv.mkDerivation (finalAttrs: {
     ];
 
   # `gctest` fails under emulation on aarch64-darwin
-  doCheck = !(stdenv.isDarwin && stdenv.isx86_64);
+  doCheck = !(stdenv.isDarwin && stdenv.isx86_64) && (stdenv.hostPlatform == stdenv.buildPlatform);
 
   enableParallelBuilding = true;
 
